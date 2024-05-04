@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="trouverNom" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="322678e0-85db-44da-b6bc-822e42375b94">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="gestioncommandes"/>
+	<parameter name="NumeroCommande" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+	gestioncommandes.client.nom
+FROM gestioncommandes.commande
+	INNER JOIN gestioncommandes.client ON 
+	 gestioncommandes.commande.`numCl` = gestioncommandes.client.`numCl` 
+WHERE 
+	 gestioncommandes.commande.`numCom` = $P{NumeroCommande}]]>
+	</queryString>
+	<field name="nom" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="240" y="15" width="100" height="30" uuid="ec0bddd0-69b0-465f-910a-24f88af1cfb3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Nom Client]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="260" y="13" width="100" height="20" uuid="9b41d1dd-ea29-438f-86ea-5134a7d4db9e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="13" width="60" height="20" uuid="cd9785b1-9756-4fc2-8ed6-34952ff0fd7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nom:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="15" width="110" height="20" uuid="8675fe34-3b5a-4452-bb19-dc44a78cb081"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Numero commande:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="15" width="60" height="20" uuid="f795045e-f91d-4834-b51e-c92329271a03"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NumeroCommande}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

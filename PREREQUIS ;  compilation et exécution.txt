@@ -1,0 +1,18 @@
+pre-configuration
+
+1. deplacez le fichier javafx-sdk-11.0.2 sur la racine C: example:"C:\javafx-sdk-11.0.2"
+2. deplacer le fichier jdk-10.0.2 dans le repertoire C:\Program Files\Java\  example: "C:\Program Files\Java\jdk-10.0.2"
+3.importer le fichier gescommandes.sql dans le serveur
+4.verifier que jasperreport marche bien
+
+Pour la compilaton  ouvrez un terminal en mode administrateur et placez vous dans le chemin du dossier de ce fichier txt et suivez ces etapes:
+
+executez ces commandes dans le terminal
+
+set PATH_TO_FX="C:\javafx-sdk-11.0.2\lib"
+
+ compilation
+"C:\Program Files\Java\jdk-10.0.2\bin\javac.exe" -cp "./lib/*"  --module-path %PATH_TO_FX% --add-modules javafx.controls  GesCom.java
+
+execution
+"C:\Program Files\Java\jdk-10.0.2\bin\java.exe" -cp "./lib/*;." --module-path %PATH_TO_FX% --add-modules javafx.controls  GesCom
